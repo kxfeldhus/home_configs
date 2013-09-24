@@ -34,6 +34,7 @@ end
 
 desc 'unpack all of the configs into $HOME'
 task :extract_configs do
+  raise "Use :link_configs instead" 
   user_home    = ENV['HOME']
   home_configs = 'home_configs'
   src         = File.join(user_home,home_configs)
@@ -51,6 +52,30 @@ task :extract_configs do
     new_filename  = file_basename.gsub(/dot/,'')
     new_dest      = File.join(user_home,new_filename)
     FileUtils.cp_r file, new_dest, :verbose => true
+  end
+
+end
+
+desc 'link all of the configs into $HOME'
+task :link_configs, :force do |t,args|
+  user_home    = ENV['HOME']
+  home_configs = 'home_configs'
+  src          = File.join(user_home,home_configs)
+  force        = args[:force] || false
+
+  file_patterns = ['dot.bash*',
+    'dot.screenrc',
+    'dot.irbrc',
+    'dot.toprc',
+    ]
+
+  files = file_patterns.map {|pattern| Dir.glob(File.join(src,pattern)) }.flatten 
+
+  files.each do |file|
+    file_basename = File.basename(file)
+    new_filename  = file_basename.gsub(/dot/,'')
+    new_dest      = File.join(user_home,new_filename)
+    FileUtils.ln_s file, new_dest, :force => force, :verbose => true
   end
 
 end
