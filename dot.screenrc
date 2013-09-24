@@ -1,0 +1,58 @@
+################################################################################
+hardstatus alwayslastline
+backtick 01 0 3600 date '+%j'
+hardstatus string "%{Gk}%H %= %{-u R}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{R}%+w%{b} %{-u W} %= %-30= %{-u B}%=%Y-%m-%d #%01` %c:%s"
+
+################################################################################
+# Turn off start message #
+startup_message off
+
+# Set messages timeout to one second #
+msgwait 1
+
+################################################################################
+# Keybindings #
+# bindkey -k k1 select 0
+bindkey -k k1 screen # bind <F1> to create a new screen
+bindkey -k k2 select 1
+bindkey -k k3 select 2
+bindkey -k k4 select 3
+bindkey -k k5 select 4
+bindkey -k k6 select 5
+bindkey -k k7 detach # bind <F7> to detach screen from this terminal
+bindkey -k k8 kill # bind <F8> to kill current session
+bindkey -k k9 title # bind <F9> to rename an existing window
+bindkey -k k; screen # bind <F10> to create a new screen
+bindkey -k F1 prev # bind <F11> to move to previous window
+bindkey -k F2 next # bind <F12> to move to next window
+
+#
+#  Toggle 'fullscreen' or not.
+#
+#bind f eval "caption splitonly" "hardstatus ignore"
+#bind F eval "caption always"    "hardstatus alwayslastline"
+
+################################################################################
+# Change the default switch window command from C^A^A to C^A^O #
+escape ^A^A
+bind o other
+
+################################################################################
+# Default Screens
+
+# screen -t 'time' 0 #'t now' 
+#screen -t shell_2
+
+#dynamic title
+shelltitle '> |bash'
+
+#scrollback default is 100 lines which is BS
+defscrollback 100000
+
+bind ^x
+bind ^x stuff "screen -X chdir \$PWD;screen -X eval 'screen' 'other'^M"
+
+# term screen-256color
+attrcolor b ".I"
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+defbce "on"
