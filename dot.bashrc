@@ -45,6 +45,6 @@ if [ -f ~/.bash_screen ]; then
 fi
 
 # Work specific stuff
-if [ -f ~/.bash_work ]; then
-        . ~/.bash_work
-fi
+# if [ -f ~/.bash_work ]; then
+        # . ~/.bash_work
+# fi
