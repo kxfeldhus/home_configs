@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'irb/completion'
 require 'pp'
-require 'interactive_editor'
 
 
 IRB.conf[:EVAL_HISTORY] = 100000000
@@ -11,9 +10,10 @@ IRB.conf[:AUTO_INDENT]  = true
 IRB.conf[:USE_PROMPT]   = true
 IRB.conf[:USE_READLINE] = true
 
-# begin
+begin
+require 'interactive_editor'
 #  require 'wirble'
 #  Wirble.init
 #  Wirble.colorize
-# rescue
-# end
+rescue
+end

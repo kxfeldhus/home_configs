@@ -17,7 +17,7 @@ shopt -s histappend # append to the history file, don't overwrite it
 PROMPT_COMMAND='history -a; echo -n -e "\033k\033\\"'
 HOST=`hostname | sed 's/\..*//'`
 # Set prompt to look like this "user@hostname: 08:46:29 ~ > "
-PS1='\[\e[1;30m\]\[\e[1;34m\]\u@\H\[\e[1;30m\]: $(date +%T) \[\e[1;37m\]\w\[\e[0;37m\] \n> '
+PS1='\[\e[1;30m\]\[\e[1;34m\]\u@\H\[\e[1;38m\]: $(date +%T) \[\e[1;37m\]\w\[\e[0;37m\] \n> '
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
