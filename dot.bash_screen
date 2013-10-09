@@ -1,5 +1,5 @@
 # Login greeting
-if [ "$TERM" != "screen-bce" -a ! "$SHOWED_SCREEN_MESSAGE" = "true" ]; then
+if [[ ! "$TERM" =~ "screen" ]]; then
 
         screens=`screen -ls | grep -e '[0-9]\{2,10\}\.pts' | sed 's/^. *//g' | sed 's/\.pts.*(/-(/g'`
         IFS='
@@ -28,7 +28,6 @@ if [ "$TERM" != "screen-bce" -a ! "$SHOWED_SCREEN_MESSAGE" = "true" ]; then
                 *) `screen -x ${sessions[session_id]//[!0-9]/}` #`screen -x ${sessions[session_id]}`
                 ;;
         esac
-        export SHOWED_SCREEN_MESSAGE="true"
 fi
 
 # Set the screen title
