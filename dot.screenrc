@@ -40,9 +40,6 @@ bind o other
 ################################################################################
 # Default Screens
 
-# screen -t 'time' 0 #'t now' 
-#screen -t shell_2
-
 #dynamic title
 shelltitle '> |bash'
 
@@ -50,9 +47,12 @@ shelltitle '> |bash'
 defscrollback 100000
 
 bind ^x
-bind ^x stuff "screen -X chdir \$PWD;screen -X eval 'screen' 'other'^M"
+# bind ^x stuff "screen -X chdir \$PWD;screen -X eval 'screen' 'other'^M"
 
-term screen-256color-bce
-attrcolor b ".I"
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
-defbce "on"
+# term screen-256color
+# term xterm-256color
+
+attrcolor b ".I"    # allow bold colors - necessary for some reason
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
+defbce on    # use current bg color for erased chars

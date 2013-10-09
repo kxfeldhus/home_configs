@@ -53,4 +53,4 @@ else
     RESET="\033[m"
 fi
 
-PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BASE0\]$(date +%T) \[$BLUE\]\w\n\[$YELLOW\]\[$BASE0\]> \[$RESET\]"
+PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BASE0\]$(date +%T) \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"

@@ -17,14 +17,6 @@ shopt -s histappend # append to the history file, don't overwrite it
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-# Bash Prompt
-if [ -f ~/.bash_prompt ]; then
-        . ~/.bash_prompt
-else
-        # Set prompt to look like this "user@hostname: 08:46:29 ~ > "
-        PS1='\[\e[1;30m\]\[\e[1;34m\]\u@\H\[\e[1;38m\]: $(date +%T) \[\e[1;37m\]\w\[\e[0;37m\] \n> '
-fi
-
 
 # Environment variable definitions.
 if [ -f ~/.bash_env ]; then
@@ -43,12 +35,22 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
 fi
 
+# Work specific stuff
+# if [ -f ~/.bash_work ]; then
+        # . ~/.bash_work
+# fi
+# Bash Prompt
+
+if [ -f ~/.bash_prompt ]; then
+        . ~/.bash_prompt
+else
+        # Set prompt to look like this "user@hostname: 08:46:29 ~ > "
+        PS1='\[\e[1;30m\]\[\e[1;34m\]\u@\H\[\e[1;38m\]: $(date +%T) \[\e[1;37m\]\w\[\e[0;37m\] \n> '
+fi
+
 # GNU Screen welcome window session selector
 if [ -f ~/.bash_screen ]; then
         . ~/.bash_screen
 fi
 
-# Work specific stuff
-# if [ -f ~/.bash_work ]; then
-        # . ~/.bash_work
-# fi
+
