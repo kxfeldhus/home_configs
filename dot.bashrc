@@ -11,6 +11,8 @@ HISTSIZE=10000000
 HISTFILESIZE=2000000
 HISTTIMEFORMAT="%Y%m%d %H:%M:%S "
 
+PROMPT_COMMAND='history -a; echo -n -e "\033k\033\\"'
+
 shopt -s checkwinsize # check the window size after each command and update the values of LINES and COLUMNS.
 shopt -s histappend # append to the history file, don't overwrite it
 
