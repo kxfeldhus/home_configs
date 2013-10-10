@@ -1,0 +1,211 @@
+filetype off
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
+call pathogen#helptags()
+syntax on
+filetype plugin indent on
+call pathogen#infect()
+
+set nocompatible  " We don't want vi compatibility.
+set smarttab
+set autoindent
+set expandtab
+set tags=tags;
+set hidden
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set fileformats=unix,dos
+set showmatch  " Show matching brackets.
+set mat=5  " Bracket blinking.
+set lcs=eol:$,trail:~,extends:>,precedes:< " Show $ at end of line and trailing space as ~
+set novisualbell  " No blinking .
+set noerrorbells  " No noise.
+set laststatus=2  " Always show status line.
+set hidden
+set history=1000
+set wildmenu
+set wildmode=list:longest
+set ignorecase
+set smartcase
+set scrolloff=3
+set backup                  " Enable creation of backup file.
+set backupdir=~/.vim/backups " Where backups will go.
+set directory=~/.vim/tmp     " Where temporary files will go.
+set ruler
+set statusline=%<%f%h%m%r%y%=%03b\ 0x%02B\ \ %04l,%03c\ %P
+set hlsearch " Highlight search terms...
+set incsearch " ...dynamically as they are typed.
+set backspace=indent,eol,start " Intuitive backspacing in insert mode
+set foldmethod=indent   "fold based on indent
+set foldnestmax=10      "deepest fold is 10 levels
+set nofoldenable        "dont fold by default
+set foldlevel=1         "this is just what i use
+set number
+set background=dark
+set t_Co=256
+set shortmess=atI
+set listchars=tab:>-,trail:.,eol:$
+
+colorscheme solarized 
+
+" I always hit wq by accident on my small laptop keyboard, so disable it.
+cabbrev wq w
+
+nnoremap ' `
+nnoremap ` '
+
+let mapleader = ","
+let maplocalleader = "." 
+
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+
+nmap <silent> <leader>n :silent :nohlsearch<CR>
+
+nmap <silent> <leader>s :set nolist!<CR>
+
+"This unsets the "last search pattern" register by hitting return
+nnoremap <CR> :noh<CR>
+" nnoremap <esc> :noh<return><esc>
+
+
+" noremap n n:call HighlightNearCursor()<CR>
+" noremap N N:call HighlightNearCursor()<CR>
+" noremap * *:call HighlightNearCursor()<CR>
+
+" function HighlightNearCursor()
+"         match Todo /\k*\%#\k*/
+" endfunction
+
+let g:netrw_keepdir=0
+
+function MultiExtensionFiletype()
+    let ft_default=&filetype
+    let ft_prefix=substitute(matchstr(expand('%'),'\..\+\.'),'\.','','g')
+    sil exe "set filetype=" . ft_prefix  . "." . ft_default
+endfunction
+autocmd BufReadPost *.*.* call MultiExtensionFiletype()
+
+au FileType c,cc,cpp,h,hh,hpp,java,objc,objcpp :set autoindent expandtab cin shiftwidth=4 softtabstop=4 cino +=(0
+au FileType html,htm,jsp :set autoindent expandtab cin shiftwidth=2 softtabstop=2 cino +=(0
+au FileType xml :set autoindent expandtab cin shiftwidth=2 softtabstop=2
+au FileType cucumber :set autoindent expandtab cin shiftwidth=2 softtabstop=2
+au FileType perl :set autoindent expandtab cin shiftwidth=2 softtabstop=2
+au FileType make :set noautoindent noexpandtab shiftwidth=4 tabstop=4 softtabstop=0
+
+" Javascript stuff
+au FileType javascript set autoindent expandtab cin shiftwidth=2 softtabstop=2 cino +=(0
+au FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+
+" Python stuff
+au FileType python :set autoindent expandtab cin shiftwidth=4 softtabstop=4 cino +=(0
+au BufNewFile,BufRead *.mako set filetype=mako
+
+" Ruby stuff
+au FileType ruby,eruby set autoindent expandtab cin shiftwidth=2 softtabstop=2 cino +=(0
+au FileType ruby,eruby set omnifunc=rubycomplete#Complete
+au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+au FileType ruby,eruby let g:rubycomplete_rails = 1
+au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+au BufNewFile,BufRead *.thor set filetype=ruby
+au BufNewFile,BufRead .autotest set filetype=ruby
+au BufNewFile,BufRead Gemfile set filetype=ruby
+au BufNewFile,BufRead *.yaml,*.yml setf yaml
+au BufNewFile,BufRead *.jst set syntax=jst
+au BufNewFile,BufRead *.j :set syntax=objj
+
+" MapServer config file
+au BufNewFile,BufRead *.map         setf map
+au FileType map set shiftwidth=2 softtabstop=2 et 
+
+" VimOrganizer
+" au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
+" au BufEnter *.org            call org#SetOrgFileType()
+
+" let g:org_todo_setup='TODO | DONE | NEXT | WAITING'
+" let g:org_tags_alist='{@home(h) @work(w) @tennisclub(t)} {easy(e) hard(d)} {computer(c) phone(p)}'
+" let g:org_agenda_select_dirs=["~/org_files"]
+" let g:agenda_files = split(glob("~/org_files/org-mod*.org"),"\n")
+" let g:org_todo_custom_highlights = 
+"       \     { 'NEXT': { 'guifg':'#888888', 'guibg':'#222222',
+"       \              'ctermfg':'gray', 'ctermbg':'darkgray'}
+"       \      'WAITING': { 'guifg':'red', 
+"       \                 'ctermfg':'red' } }
+
+
+" Todo.txt
+autocmd BufNewFile,BufRead *.task,*.todo,todo.txt setf todo
+
+" Quicktask
+" autocmd BufNewFile,BufRead *.task,*.todo,todo.txt setf quicktask
+" let g:quicktask_autosave = 1
+" let g:quicktask_snip_path = '~/quicktask/snips'
+
+
+" Fuzze match
+let g:fuzzy_ignore = "*.log"
+let g:fuzzy_matching_limit = 70
+
+map <silent> <leader>f :FufFileWithCurrentBufferDir<CR>
+" map <silent> <leader>b :FufBuffer<CR>
+
+let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
+map <leader>N :NERDTreeToggle<CR>
+map <leader>n :NERDTree<CR>
+let NERDTreeMapActivateNode='<CR>'
+let NERDTreeShowBookmarks=1
+let NERDTreeChDirMode=2
+let NERDTreeQuitOnOpen=1
+let NERDTreeIgnore=['\.pyc','\.o']
+
+" specky
+" let g:speckyQuoteSwitcherKey = "<leader>'"
+" let g:speckyRunRdocKey = "<leader>r"
+" let g:speckySpecSwitcherKey = "<leader>t"
+let g:speckyRunSpecKey = "<leader>T"
+let g:speckyRunSpecCmd = "bundle exec rspec -fs"
+" let g:speckyRunSpecCmd = "rspec -r ~/.vim/bundle/specky/ruby/specky_formatter.rb -f SpeckyFormatter"
+let g:speckyWindowType = 1
+
+" taglist
+" map <leader>m :TlistToggle<CR>
+" let Tlist_Exit_OnlyWindow = 1     " exit if taglist is last window open
+" let Tlist_Show_One_File = 1       " Only show tags for current buffer
+
+" bufexplorer
+let g:bufExplorerShowRelativePath=1  " Show relative paths.
+map <silent> <leader>bb :BufExplorer<CR>
+
+let g:SuperTabDefaultCompletionType = "context"
+
+function IndentV()
+        Tabularize /\s=\s/l0c0
+        Tabularize /^[^:]*\zs:/l0
+        Tabularize /=>/
+
+        " Tabularize /^[^=>]*\zs=>/l1
+endfunction
+map <Leader>iv :call IndentV()<cr>
+
+" Comment line out to 80 characters
+map <leader>co O<Esc>85A#<Esc>==<ESC>0<ESC>80l<ESC>100x<ESC>l
+
+" NERDCommenter
+" Add a space after the comment delimiter
+let NERDSpaceDelims = 1
+
+" Next and last buffer switching
+map <leader>k :bprev<CR>
+map <leader>l :bnext<CR>
+
+" CTRLP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_root_markers = ''
+let g:ctrlp_working_path_mode = 'ra'
+
+nnoremap <leader>y "=strftime("%c")<CR>P
+
+compiler rubyunit
+nmap <Leader>a :cf /tmp/autotest.txt<CR> :compiler rubyunit<CR>
+
