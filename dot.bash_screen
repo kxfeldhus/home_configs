@@ -33,11 +33,11 @@ if [[ -z "$STY" ]]; then
 fi
 
 # Set the screen title
-case $TERM in
-    screen*)
-	SCREENTITLE='\[\ek\e\\\]'
-	;;
-    *)
-	SCREENTITLE=''
-	;;
-esac
+# case $TERM in
+#     screen*)
+#         SCREENTITLE='\[\ek\e\\\]'
+#         ;;
+#     *)
+#         SCREENTITLE=''
+#         ;;
+# esac

@@ -54,3 +54,33 @@ else
 fi
 
 PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BASE0\]$(date +%T) \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"
+
+case $TERM in
+    screen*)
+screen_set_window_title () {
+    local HPWD="$PWD"
+    case $HPWD in
+      $HOME) HPWD="~";;
+
+
+      ## long name option:
+      $HOME/*) HPWD="~${HPWD#$HOME}";;
+
+
+      ## short name option:
+      # *) HPWD=`basename "$HPWD"`;;
+
+
+    esac
+    # printf '\ek%s\e\\' "$HPWD"
+    printf '\ek\e\134\ek%s\e\134' "$HPWD"
+  }
+      PROMPT_COMMAND="history -a; screen_set_window_title; $PROMPT_COMMAND"
+      # PROMPT_COMMAND='history -a; printf "\033k\033\134\033k$HPWD\033\134"'
+      # PROMPT_COMMAND='history -a; echo -n -e "\033k\033\\"'
+      # PROMPT_COMMAND='printf "\ek\e\134\ek`basename ${PWD}`\e\134"'
+      ;;
+      *)
+      PROMPT_COMMAND='history -a'
+      ;;
+esac
