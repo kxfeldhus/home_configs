@@ -12,6 +12,7 @@ IRB.conf[:USE_READLINE] = true
 
 begin
 require 'interactive_editor'
+require 'awesome_print' # awesome_print
 #  require 'wirble'
 #  Wirble.init
 #  Wirble.colorize
