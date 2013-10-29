@@ -1,8 +1,10 @@
 ################################################################################
-hardstatus alwayslastline
-backtick 01 0 3600 date '+%j'
-backtick 02 0 1 date --utc '+%T %Z'
-hardstatus string "%{Gk}%H %= %{-u R}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{R}%+w%{b} %{-u W} %= %-40= %{-u B}%=%Y-%m-%d #%01` %c:%s %02`"
+# hardstatus alwayslastline
+hardstatus lastline
+backtick 01 3600 3600 date '+%j'
+backtick 02 0 1 date '+%T %Z'
+backtick 03 0 1 date --utc '+%H %Z'
+hardstatus string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
 
 ################################################################################
 # Turn off start message #
