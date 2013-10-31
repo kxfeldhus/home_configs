@@ -53,7 +53,7 @@ else
     RESET="\033[m"
 fi
 
-PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BASE0\]$(date +%T) \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"
+PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"
 
 # screen_set_window_title () {
 #     local HPWD="$PWD"
