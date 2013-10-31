@@ -1,7 +1,10 @@
 ################################################################################
-hardstatus alwayslastline
-backtick 01 0 3600 date '+%j'
-hardstatus string "%{Gk}%H %= %{-u R}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{R}%+w%{b} %{-u W} %= %-30= %{-u B}%=%Y-%m-%d #%01` %c:%s"
+# hardstatus alwayslastline
+hardstatus lastline
+backtick 01 3600 3600 date '+%j'
+backtick 02 0 1 date '+%T %Z'
+backtick 03 0 1 date --utc '+%H %Z'
+hardstatus string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
 
 ################################################################################
 # Turn off start message #
@@ -41,7 +44,7 @@ bind o other
 # Default Screens
 
 #dynamic title
-shelltitle '> |bash'
+shelltitle '> |-'
 
 #scrollback default is 100 lines which is BS
 defscrollback 100000
@@ -52,6 +55,6 @@ bind ^x
 term screen-256color
 # term xterm-256color
 
-# attrcolor b ".I"    # allow bold colors - necessary for some reason
-# termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
-# defbce on    # use current bg color for erased chars
+attrcolor b ".I"    # allow bold colors - necessary for some reason
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'   # tell screen how to set colors. AB = background, AF=foreground
+defbce on    # use current bg color for erased chars

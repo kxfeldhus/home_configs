@@ -36,9 +36,9 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Work specific stuff
-# if [ -f ~/.bash_work ]; then
-        # . ~/.bash_work
-# fi
+ if [ -f ~/.bash_work ]; then
+        . ~/.bash_work
+fi
 # Bash Prompt
 
 if [ -f ~/.bash_prompt ]; then
