@@ -7,16 +7,14 @@ if [[ -z "$STY" ]]; then
         sessions=( $screens )
 
         echo "+---------------------------------------+"
-        echo "| Screens are available:                |"
-        echo "| x-(none)                              |"
-        echo "| n-(new)                               |"
+        echo "| x: (none)                             |"
+        echo "| n: (new)                              |"
+        echo "+---------------------------------------+"
 
         for i in ${!sessions[@]}; do
-          echo "| $i-${sessions[$i]}                    |"
+          printf "%-1s %-1s %-34s %s\n" "|" "$i:" "${sessions[$i]}" "|" 
         done
 
-        echo "+---------------------------------------+"
-        echo "| s3                                    |"
         echo "+---------------------------------------+"
         echo -e "\n"
 
@@ -26,8 +24,6 @@ if [[ -z "$STY" ]]; then
                 "n") `screen`
                 ;;
                 "x")
-                ;;
-                "s3") exec ssh $g03
                 ;;
                 *) `screen -x ${sessions[session_id]//[!0-9]/}`
                 ;;
