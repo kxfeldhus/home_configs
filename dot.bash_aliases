@@ -34,3 +34,8 @@ alias top='top -u `whoami`'
 function g() { eval "egrep -r -n" "$@" "| grep -v '\.svn'" ; }
 
 alias todo="todotxt"
+
+# ssh and pass the current STY var through, this will have the
+# affect of telling the remote that you are ssh'ing from a 
+# screen session, or not.
+function sshh() { ssh -t -X $@ 'export STY='"'$STY'"';bash'; }

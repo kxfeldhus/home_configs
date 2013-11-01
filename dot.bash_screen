@@ -1,6 +1,6 @@
 # Login greeting
 
-if [[ ! "$TERM" =~ "screen" ]] && [[ -z "$STY" ]]; then
+if [[ -z "$STY" ]]; then
         screens=`screen -ls | grep -e '[0-9]\{2,10\}\.pts' | sed 's/^. *//g' | sed 's/\.pts.*(/-(/g'`
         IFS='
         '
