@@ -1,6 +1,6 @@
 ################################################################################
-# hardstatus alwayslastline
-hardstatus lastline
+hardstatus alwayslastline
+# hardstatus lastline
 backtick 01 3600 3600 date '+%j'
 backtick 02 0 1 date '+%T %Z'
 backtick 03 0 1 date --utc '+%H %Z'
