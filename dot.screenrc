@@ -1,9 +1,9 @@
 ################################################################################
 # hardstatus alwayslastline
 hardstatus lastline
-backtick 01 3600 3600 date '+%j'
-backtick 02 0 1 date '+%T %Z'
-backtick 03 0 1 date --utc '+%H %Z'
+backtick 01 3600 3600 $HOME/.screen/day_of_year
+backtick 02 0 1 $HOME/.screen/denver_time
+backtick 03 0 1 $HOME/.screen/utc_time
 hardstatus string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
 
 ################################################################################
