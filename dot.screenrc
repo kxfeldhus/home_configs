@@ -1,6 +1,5 @@
 ################################################################################
-# hardstatus alwayslastline
-hardstatus lastline
+hardstatus alwayslastline
 backtick 01 3600 3600 $HOME/.screen/day_of_year
 backtick 02 0 1 $HOME/.screen/denver_time
 backtick 03 0 1 $HOME/.screen/utc_time
