@@ -1,9 +1,18 @@
 ################################################################################
-hardstatus alwayslastline
+# We hack the hardstatus to display the hostname of the machine we are on, and
+# use the caption as the real status bar
+# http://aperiodic.net/screen/faq#how_can_screen_use_xterm_s_title_bar
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'hs:ts=\E]0;:fs=\007:ds=\E]0;\007'
+hardstatus off
+hardstatus string "%H"
+
 backtick 01 3600 3600 $HOME/.screen/day_of_year
 backtick 02 0 1 $HOME/.screen/denver_time
 backtick 03 0 1 $HOME/.screen/utc_time
-hardstatus string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
+
+caption always 
+caption string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
+
 
 ################################################################################
 # Turn off start message #

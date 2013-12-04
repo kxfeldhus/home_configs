@@ -54,7 +54,8 @@ else
 fi
 
 TERM_TITLE="\033]0;$(hostname)\a"
-PS1="$TERM_TITLE\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"
+PS1="\[${BOLD}${CYAN}\]\u\[$BASE0\]@\[$CYAN\]\h \[$BLUE\]\w\n\[$YELLOW\]> \[$RESET\]"
+# PS1="\u@\h \w\n> "
 
 # screen_set_window_title () {
 #     local HPWD="$PWD"
