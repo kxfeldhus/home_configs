@@ -28,7 +28,7 @@ alias svndiffvim='svn diff --diff-cmd ~/bin/svnvimdiff'
 alias tf='tail -f'
 alias tt='tail -1000'
 alias s='screen'
-alias top='top -M -u `whoami`'
+alias top='top -u $USER'
 
 # Grep and exclude .svn
 function g() { eval "egrep -r -n" "$@" "| grep -v '\.svn'" ; }
