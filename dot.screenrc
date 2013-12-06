@@ -31,9 +31,9 @@ msgwait 1
 # bindkey -k k5 select 4
 # bindkey -k k6 select 
 
-bindkey -k k6 title # bind <F6> to rename an existing window
-bindkey -k k7 detach # bind <F7> to detach screen from this terminal
-bindkey -k k8 kill # bind <F8> to kill current session
+bindkey -k k2 title # bind <F6> to rename an existing window
+bindkey -k k3 detach # bind <F7> to detach screen from this terminal
+bindkey -k k4 kill # bind <F8> to kill current session
 bindkey -k k9 mapdefault # bind <F9> to escape the next keybinding, I use this to send literals to a nested screen session
 bindkey -k k; screen # bind <F10> to create a new screen
 bindkey -k F1 prev # bind <F11> to move to previous window
@@ -43,13 +43,13 @@ bindkey -k F2 next # bind <F12> to move to next window
 # This allows you send these key events to a nested screen session.
 # Create
 register c "^A^A^C"
-bindkey -k k2 process c 
+bindkey -k k6 process c 
 # Previous
 register p "^A^A^P"
-bindkey -k k3 process p 
+bindkey -k k7 process p 
 # Next
 register n "^A^A^N"
-bindkey -k k4 process n 
+bindkey -k k8 process n 
 
 ################################################################################
 # Change the default switch window command from C^A^A to C^A^O #

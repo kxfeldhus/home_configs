@@ -65,6 +65,8 @@ task :link_configs, :force do |t,args|
 
   file_patterns = ['dot.bash*',
     'dot.screenrc',
+    'dot.screen',
+    'dot.vim',
     'dot.irbrc',
     'dot.toprc',
     ]
@@ -78,4 +80,20 @@ task :link_configs, :force do |t,args|
     FileUtils.ln_s file, new_dest, :force => force, :verbose => true
   end
 
+  # Link vimrc
+  FileUtils.ln_s File.join(user_home, '.vim', 'vimrc'), File.join(user_home,'.vimrc'), :force => force, :verbose => true
+
+end
+
+desc 'rsync'
+task :rsync, :addr do |t,args|
+  files = "$HOME/home_configs"
+  cmd = "rsync -Pavr #{files} #{args[:addr]}:$HOME"
+  STDOUT.sync = true
+  IO.popen(cmd) do |f|
+    until f.eof?
+      puts f.read 
+    end
+  end
+   # `#{cmd}`
 end
