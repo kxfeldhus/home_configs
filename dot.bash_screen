@@ -1,31 +1,32 @@
 # Login greeting
 
 if [[ -z "$STY" ]]; then
-        screens=`screen -ls | grep -e '[0-9]\{2,10\}\.pts' | sed 's/^. *//g' | sed 's/\.pts.*(/-(/g'`
+        # screens=`screen -ls | grep -e '[0-9]\{2,10\}\.pts' | sed 's/^. *//g' | sed 's/\.pts.*(/-(/g'`
+        screens=`screen -ls | grep -e '[0-9]\{2,10\}' | sed 's/^. *//g'`
         IFS='
         '
         sessions=( $screens )
 
-        echo "+---------------------------------------+"
-        echo "| x: (none)                             |"
-        echo "| n: (new)                              |"
-        echo "+---------------------------------------+"
+        echo "+-----------------------------------------------------------+"
+        echo "| x: (none)                                                 |"
+        echo "| n: (new)                                                  |"
+        echo "+-----------------------------------------------------------+"
 
         for i in ${!sessions[@]}; do
-          printf "%-1s %-1s %-34s %s\n" "|" "$i:" "${sessions[$i]}" "|" 
+          printf "%-1s %-1s %-48s %s\n" "|" "$i:" "${sessions[$i]}" "|" 
         done
 
-        echo "+---------------------------------------+"
+        echo "+-----------------------------------------------------------+"
         echo -e "\n"
 
         echo "Which session do you want?"
         read session_id
         case "$session_id" in
-                "n") `screen`
+                "n") exec screen
                 ;;
                 "x")
                 ;;
-                *) `screen -x ${sessions[session_id]//[!0-9]/}`
+                *) exec screen -x ${sessions[session_id]//.*/}
                 ;;
         esac
 fi
