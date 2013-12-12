@@ -9,9 +9,10 @@ hardstatus string "%H"
 backtick 01 3600 3600 $HOME/.screen/day_of_year
 backtick 02 0 1 $HOME/.screen/denver_time
 backtick 03 0 1 $HOME/.screen/utc_time
+backtick 04 0 1 $HOME/.screen/meminfo
 
 caption always 
-caption string "%{Gk}[%H] [%l] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
+caption string "%{Gk}[%H] [%l] [%04`] %= %{Gk}%?%-w%?%45L>%{W}%n %t%?(%u)%?%{Gk}%+w%{b} %{-u W} %= %-51= %{Gk}%=[%Y-%m-%d] [#%01`] [%02`] [%03`]"
 
 
 ################################################################################
@@ -52,8 +53,10 @@ register n "^A^A^N"
 bindkey -k k8 process n 
 
 ################################################################################
-# Change the default switch window command from C^A^A to C^A^O #
-escape ^A^A
+# Change the default switch window command 
+# escape ^A^A
+escape ^dd
+
 bind o other
 
 #dynamic title
