@@ -54,8 +54,8 @@ bindkey -k k8 process n
 
 ################################################################################
 # Change the default switch window command 
-# escape ^A^A
-escape ^dd
+escape ^A^A
+# escape ^dd
 
 bind o other
 
