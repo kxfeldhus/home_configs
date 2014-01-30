@@ -146,8 +146,9 @@ autocmd BufNewFile,BufRead *.task,*.todo,todo.txt setf todo
 let g:fuzzy_ignore = "*.log"
 let g:fuzzy_matching_limit = 70
 
-map <silent> <leader>f :FufFileWithCurrentBufferDir<CR>
-" map <silent> <leader>b :FufBuffer<CR>
+map <silent> <leader>g :FufFileWithCurrentBufferDir<CR>
+map <silent> <leader>f :FufCoverageFile<CR>
+map <silent> <leader>v :FufBuffer<CR>
 
 let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
 map <leader>N :NERDTreeToggle<CR>
@@ -174,7 +175,7 @@ let g:speckyWindowType = 1
 
 " bufexplorer
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
-map <silent> <leader>bb :BufExplorer<CR>
+map <silent> <leader>b :BufExplorer<CR>
 
 let g:SuperTabDefaultCompletionType = "context"
 
