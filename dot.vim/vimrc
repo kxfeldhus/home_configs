@@ -45,6 +45,8 @@ set background=dark
 set t_Co=256
 set shortmess=atI
 set listchars=tab:>-,trail:.,eol:$
+" set mouse=a
+set mouse=
 
 colorscheme solarized 
 
@@ -155,11 +157,12 @@ map <silent> <leader>g :FufFileWithCurrentBufferDir<CR>
 map <silent> <leader>f :FufCoverageFile<CR>
 map <silent> <leader>v :FufBuffer<CR>
 map <silent> <leader>q :FufRenewCache<CR>
+nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>
 
 
 let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
-map <leader>N :NERDTreeToggle<CR>
-map <leader>n :NERDTreeFind<CR>
+map <leader>n :NERDTreeToggle<CR>
+" map <leader>N :NERDTreeFind<CR>
 let NERDTreeMapActivateNode='<CR>'
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
@@ -275,3 +278,24 @@ augroup IndentIgnoringBlanks
   au!
   au FileType python IndentIgnoringBlanks
 augroup END
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Additions from More Instantly Better Vim - Damien Conway
+
+" This rewires n and N to do the highlighing...
+    nnoremap <silent> n   n:call HLNext(0.4)<cr>
+    nnoremap <silent> N   N:call HLNext(0.4)<cr>
+
+    function! HLNext (blinktime)
+        set invcursorline
+        redraw
+        exec 'sleep ' . float2nr(a:blinktime * 1000) . 'm'
+        set invcursorline
+        redraw
+    endfunction
+
+"====[ Swap : and ; to make colon commands easier to type ]======
+
+    nnoremap  ;  :
+    " nnoremap  :  ;

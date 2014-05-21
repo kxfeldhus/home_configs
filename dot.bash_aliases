@@ -7,6 +7,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+alias less='less -R' # add color support
+
 # ls aliases
 alias ll='ls -lhF'
 alias la='ls -A'
