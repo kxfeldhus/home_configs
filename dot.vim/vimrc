@@ -36,6 +36,7 @@ set statusline=%<%f%h%m%r%y%=%03b\ 0x%02B\ \ %04l,%03c\ %P
 set hlsearch " Highlight search terms...
 set incsearch " ...dynamically as they are typed.
 set backspace=indent,eol,start " Intuitive backspacing in insert mode
+set nofoldenable " I dislike folding...
 set foldmethod=indent   "fold based on indent
 set foldnestmax=10      "deepest fold is 10 levels
 set nofoldenable        "dont fold by default
@@ -70,6 +71,7 @@ nmap <silent> <leader>s :set nolist!<CR>
 nnoremap <CR> :noh<CR>
 " nnoremap <esc> :noh<return><esc>
 
+set pastetoggle=<C-v>
 
 " noremap n n:call HighlightNearCursor()<CR>
 " noremap N N:call HighlightNearCursor()<CR>
@@ -106,6 +108,8 @@ au BufNewFile,BufRead *.mako set filetype=mako
 let g:pymode_doc =  0 " Disable the doc window
 set completeopt=menu
 let g:pymode_lint = 0 " Disable lint checking
+let g:pymode_rope = 0
+let g:pymode_rope_lookup_project = 0 " Rope will recursively look for a project, and be really slow
 
 
 " Ruby stuff
@@ -299,3 +303,4 @@ augroup END
 
     nnoremap  ;  :
     " nnoremap  :  ;
+    "

@@ -7,3 +7,6 @@ export SVN_EDITOR=vim
 # export PATH="$HOME/.rbenv/bin:$PATH"
 export PATH="/dg/local/cots/rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+export PYTHONSTARTUP=~/.pystartup
+export PATH=/home/kfeldhus/.local/bin:$PATH
