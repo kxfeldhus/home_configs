@@ -166,7 +166,7 @@ nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>
 
 let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
 map <leader>n :NERDTreeToggle<CR>
-" map <leader>N :NERDTreeFind<CR>
+map <leader>N :NERDTreeFind<CR>
 let NERDTreeMapActivateNode='<CR>'
 let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
