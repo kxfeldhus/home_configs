@@ -7,3 +7,12 @@
 [submodule "dot.vim/bundle/vim-golang"]
 	path = dot.vim/bundle/vim-golang
 	url = https://github.com/jnwhiteh/vim-golang.git
+[submodule "bundle/vim-ruby"]
+	path = bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "dot.vim/bundle/vim-ruby"]
+	path = dot.vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
+[submodule "dot.vim/bundle/vim-rails"]
+	path = dot.vim/bundle/vim-rails
+	url = https://github.com/tpope/vim-rails.git
