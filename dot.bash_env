@@ -4,8 +4,8 @@ export EDITOR=vim
 export SVN_EDITOR=vim
 
 # Rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="/dg/local/cots/rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="/dg/local/cots/rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
 export PYTHONSTARTUP=~/.pystartup
@@ -13,3 +13,6 @@ export PATH=/home/kfeldhus/.local/bin:$PATH
 
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/12.1/client64/lib/
 export ORACLE_HOME=/usr/lib/oracle/12.1/
+
+export GOPATH=$HOME/code/go
+export PATH=$PATH:$GOPATH/bin
