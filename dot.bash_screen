@@ -11,6 +11,7 @@ if [[ -z "$STY" ]]; then
         echo "+-----------------------------------------------------------+"
         echo "| x: (none)                                                 |"
         echo "| n: (new)                                                  |"
+        echo "| s: (ssh)                                                  |"
         echo "+-----------------------------------------------------------+"
 
         for i in ${!sessions[@]}; do
@@ -25,11 +26,9 @@ if [[ -z "$STY" ]]; then
         echo "Which session do you want?"
         read session_id
         case "$session_id" in
-                "n") exec screen
-                ;;
-                "x")
-                ;;
-                *) exec screen -x ${sessions[session_id]//.*/}
-                ;;
+                "n") exec screen ;;
+                "x") ;;
+                "s") exec $HOME/ssh_menu ;;
+                *) exec screen -x ${sessions[session_id]//.*/} ;;
         esac
 fi
