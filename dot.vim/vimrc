@@ -2,9 +2,9 @@ filetype off
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
 call pathogen#helptags()
-syntax on
-filetype plugin indent on
-call pathogen#infect()
+" syntax on
+" filetype plugin indent on
+" call pathogen#infect()
 
 set nocompatible  " We don't want vi compatibility.
 set smarttab
@@ -274,3 +274,6 @@ augroup END
     "
     "
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+syntax on
+filetype plugin indent on

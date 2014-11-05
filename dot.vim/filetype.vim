@@ -793,6 +793,11 @@ func! s:FThtml()
       setf htmldjango
       return
     endif
+    if getline(n) =~ '<%.*%>'
+      setf eruby
+      return
+    endif
+
     let n = n + 1
   endwhile
   setf html

@@ -12,7 +12,7 @@
 	url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "dot.vim/bundle/vim-ruby"]
 	path = dot.vim/bundle/vim-ruby
-	url = https://github.com/vim-ruby/vim-ruby.git
+	url = git://github.com/vim-ruby/vim-ruby.git
 [submodule "dot.vim/bundle/vim-rails"]
 	path = dot.vim/bundle/vim-rails
 	url = https://github.com/tpope/vim-rails.git
