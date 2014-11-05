@@ -19,3 +19,6 @@
 [submodule "dot.vim/bundle/vim-javascript"]
 	path = dot.vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
+[submodule "dot.vim/bundle/ctrlp.vim"]
+	path = dot.vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git

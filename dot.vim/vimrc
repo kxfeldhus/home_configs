@@ -129,29 +129,6 @@ au BufNewFile,BufRead *.j :set syntax=objj
 au BufNewFile,BufRead *.map         setf map
 au FileType map set shiftwidth=2 softtabstop=2 et 
 
-" VimOrganizer
-" au! BufRead,BufWrite,BufWritePost,BufNewFile *.org 
-" au BufEnter *.org            call org#SetOrgFileType()
-
-" let g:org_todo_setup='TODO | DONE | NEXT | WAITING'
-" let g:org_tags_alist='{@home(h) @work(w) @tennisclub(t)} {easy(e) hard(d)} {computer(c) phone(p)}'
-" let g:org_agenda_select_dirs=["~/org_files"]
-" let g:agenda_files = split(glob("~/org_files/org-mod*.org"),"\n")
-" let g:org_todo_custom_highlights = 
-"       \     { 'NEXT': { 'guifg':'#888888', 'guibg':'#222222',
-"       \              'ctermfg':'gray', 'ctermbg':'darkgray'}
-"       \      'WAITING': { 'guifg':'red', 
-"       \                 'ctermfg':'red' } }
-
-
-" Todo.txt
-autocmd BufNewFile,BufRead *.task,*.todo,todo.txt setf todo
-
-" Quicktask
-" autocmd BufNewFile,BufRead *.task,*.todo,todo.txt setf quicktask
-" let g:quicktask_autosave = 1
-" let g:quicktask_snip_path = '~/quicktask/snips'
-
 
 " Fuzze match
 let g:fuzzy_ignore = "*.log"
@@ -172,15 +149,6 @@ let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.pyc','\.o']
-
-" specky
-" let g:speckyQuoteSwitcherKey = "<leader>'"
-" let g:speckyRunRdocKey = "<leader>r"
-" let g:speckySpecSwitcherKey = "<leader>t"
-let g:speckyRunSpecKey = "<leader>T"
-let g:speckyRunSpecCmd = "bundle exec rspec -fs"
-" let g:speckyRunSpecCmd = "rspec -r ~/.vim/bundle/specky/ruby/specky_formatter.rb -f SpeckyFormatter"
-let g:speckyWindowType = 1
 
 " taglist
 " map <leader>m :TlistToggle<CR>
@@ -304,3 +272,5 @@ augroup END
     nnoremap  ;  :
     " nnoremap  :  ;
     "
+    "
+set runtimepath^=~/.vim/bundle/ctrlp.vim
