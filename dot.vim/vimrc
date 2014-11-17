@@ -49,7 +49,7 @@ set listchars=tab:>-,trail:.,eol:$
 " set mouse=a
 set mouse=
 
-colorscheme solarized 
+colorscheme solarized
 
 " I always hit wq by accident on my small laptop keyboard, so disable it.
 cabbrev wq w
@@ -58,7 +58,7 @@ nnoremap ' `
 nnoremap ` '
 
 let mapleader = ","
-let maplocalleader = "." 
+let maplocalleader = "."
 
 nnoremap <C-e> 3<C-e>
 nnoremap <C-y> 3<C-y>
@@ -68,8 +68,8 @@ nmap <silent> <leader>n :silent :nohlsearch<CR>
 nmap <silent> <leader>s :set nolist!<CR>
 
 "This unsets the "last search pattern" register by hitting return
-nnoremap <CR> :noh<CR>
-" nnoremap <esc> :noh<return><esc>
+"nnoremap <CR> :noh<CR>
+nnoremap <leader><space> :noh<CR>
 
 set pastetoggle=<C-v>
 
@@ -127,7 +127,7 @@ au BufNewFile,BufRead *.j :set syntax=objj
 
 " MapServer config file
 au BufNewFile,BufRead *.map         setf map
-au FileType map set shiftwidth=2 softtabstop=2 et 
+au FileType map set shiftwidth=2 softtabstop=2 et
 
 
 " Fuzze match
@@ -149,6 +149,24 @@ let NERDTreeShowBookmarks=1
 let NERDTreeChDirMode=2
 let NERDTreeQuitOnOpen=1
 let NERDTreeIgnore=['\.pyc','\.o']
+
+""""""""""""""""""""""""""""""
+" airline
+""""""""""""""""""""""""""""""
+if !exists('g:airline_symbols')
+        let g:airline_symbols = {}
+endif
+set noshowmode " Disable the default mode indicator
+let g:airline_enable_branch     = 0
+let g:airline_left_sep          = ''
+let g:airline_left_alt_sep      = ''
+let g:airline_right_sep         = ''
+let g:airline_right_alt_sep     = ''
+let g:airline_symbols.linenr    = '#'
+" let g:airline_section_b = '%{getcwd()}'
+
+" Cleanup trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
 
 " taglist
 " map <leader>m :TlistToggle<CR>
