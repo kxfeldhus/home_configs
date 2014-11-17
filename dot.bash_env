@@ -3,6 +3,9 @@ export VISUAL=vim
 export EDITOR=vim
 export SVN_EDITOR=vim
 
+# Don't popup window for git password
+export GIT_ASKPASS=
+
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 # export PATH="/dg/local/cots/rbenv/bin:$PATH"
