@@ -28,7 +28,8 @@ set wildmode=list:longest
 set ignorecase
 set smartcase
 set scrolloff=3
-set backup                  " Enable creation of backup file.
+set nobackup                  " disable creation of backup file.
+set noswapfile " no swap files
 set backupdir=~/.vim/backups " Where backups will go.
 set directory=~/.vim/tmp     " Where temporary files will go.
 set ruler
@@ -56,6 +57,15 @@ cabbrev wq w
 
 nnoremap ' `
 nnoremap ` '
+
+" Move row-wise instead of line-wise
+nnoremap j gj
+nnoremap k gk
+
+" Disable some annoying keys
+nnoremap <F1> <nop>
+nnoremap Q <nop>
+nnoremap K <nop>
 
 let mapleader = ","
 let maplocalleader = "."
@@ -166,7 +176,17 @@ let g:airline_symbols.linenr    = '#'
 " let g:airline_section_b = '%{getcwd()}'
 
 " Cleanup trailing whitespace
-autocmd BufWritePre * :%s/\s\+$//e
+" autocmd BufWritePre * :%s/\s\+$//e
+function StripTrailingWhitespace()
+  if !&binary && &filetype != 'diff'
+    normal mz
+    normal Hmy
+    %s/\s\+$//e
+    normal 'yz<CR>
+    normal `z
+  endif
+endfunction
+map <leader>ws :StripTrailingWhitespace<CR>
 
 " taglist
 " map <leader>m :TlistToggle<CR>
@@ -174,8 +194,20 @@ autocmd BufWritePre * :%s/\s\+$//e
 " let Tlist_Show_One_File = 1       " Only show tags for current buffer
 
 " bufexplorer
-let g:bufExplorerShowRelativePath=1  " Show relative paths.
-map <silent> <leader>b :BufExplorer<CR>
+" let g:bufExplorerFindActive=1        " Go to active window.
+" let g:bufExplorerShowUnlisted=1      " Show unlisted buffers.
+" let g:bufExplorerSortBy='number'     " Sort by the buffer's number.
+" let g:bufExplorerShowRelativePath=1  " Show relative paths.
+" map <silent> <leader>b :BufExplorer<CR>
+"
+
+" buffergator
+" let g:buffergator_vsplit_size=120
+" let g:buffergator_autoupdate=1
+" let g:buffergator_show_full_directory_path=0
+" let g:buffergator_display_regime="basename"
+" let g:buffergator_sort_regime="basename"
+
 
 let g:SuperTabDefaultCompletionType = "context"
 
@@ -292,6 +324,24 @@ augroup END
     "
     "
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" Protect large files from sourcing and other overhead.
+" Files become read only
+if !exists("my_auto_commands_loaded")
+  let my_auto_commands_loaded = 1
+  " Large files are > 100M
+  " Set options:
+  " eventignore+=FileType (no syntax highlighting etc
+  " assumes FileType always on)
+  " noswapfile (save copy of file)
+  " bufhidden=unload (save memory when other file is viewed)
+  " buftype=nowritefile (is read-only)
+  " undolevels=-1 (no undo possible)
+  let g:LargeFile = 1024 * 1024 * 100
+  augroup LargeFile
+    autocmd BufReadPre * let f=expand("<afile>") | if getfsize(f) > g:LargeFile | set eventignore+=FileType | setlocal noswapfile bufhidden=unload buftype=nowrite undolevels=-1 | else | set eventignore-=FileType | endif
+    augroup END
+  endif
 
 syntax on
 filetype plugin indent on
