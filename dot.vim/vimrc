@@ -146,25 +146,38 @@ au BufNewFile,BufRead *.map         setf map
 au FileType map set shiftwidth=2 softtabstop=2 et
 
 
+""""""""""""""""""""""""""""""""
+" Unite
+""""""""""""""""""""""""""""""""
+let g:unite_source_history_yank_enable = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+
+nnoremap <leader>t :<C-u>Unite -no-split -buffer-name=files   file_rec/async:!<cr>
+nnoremap <leader>f :<C-u>Unite -buffer-name=files   file<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=mru     file_mru<cr>
+nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
+nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
+
+
 " Fuzze match
-let g:fuzzy_ignore = "*.log"
-let g:fuzzy_matching_limit = 70
+" let g:fuzzy_ignore = "*.log"
+" let g:fuzzy_matching_limit = 70
 
-map <silent> <leader>g :FufFileWithCurrentBufferDir<CR>
-map <silent> <leader>f :FufCoverageFile<CR>
-map <silent> <leader>v :FufBuffer<CR>
-map <silent> <leader>q :FufRenewCache<CR>
-nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>
+" map <silent> <leader>g :FufFileWithCurrentBufferDir<CR>
+" map <silent> <leader>f :FufCoverageFile<CR>
+" map <silent> <leader>b :FufBuffer<CR>
+" map <silent> <leader>q :FufRenewCache<CR>
+" nnoremap <silent> <C-f><C-r> :FufRenewCache<CR>
 
 
-let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
-map <leader>n :NERDTreeToggle<CR>
-map <leader>N :NERDTreeFind<CR>
-let NERDTreeMapActivateNode='<CR>'
-let NERDTreeShowBookmarks=1
-let NERDTreeChDirMode=2
-let NERDTreeQuitOnOpen=1
-let NERDTreeIgnore=['\.pyc','\.o']
+" let g:NERDTreeDirArrows=0 " Turn off the nifty unicode arrows, don't work everywhere
+" map <leader>n :NERDTreeToggle<CR>
+" map <leader>N :NERDTreeFind<CR>
+" let NERDTreeMapActivateNode='<CR>'
+" let NERDTreeShowBookmarks=1
+" let NERDTreeChDirMode=2
+" let NERDTreeQuitOnOpen=1
+" let NERDTreeIgnore=['\.pyc','\.o']
 
 """"""""""""""""""""""""""""""
 " airline
@@ -197,6 +210,9 @@ let g:airline_symbols.linenr    = '#'
 "
 " vim-better-whitespace config
 map <leader>ws :StripWhitespace<CR>
+
+" Dont do the whitespace highlighting in the unite window.
+let g:better_whitespace_filetypes_blacklist = ['unite']
 
 
 " Show the 80th column
@@ -259,15 +275,15 @@ map <leader>k :bprev<CR>
 map <leader>l :bnext<CR>
 
 " CTRLP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_cmd = 'CtrlP'
 " let g:ctrlp_root_markers = ''
-let g:ctrlp_working_path_mode = 'ra'
+" let g:ctrlp_working_path_mode = 'ra'
 
-nnoremap <leader>y "=strftime("%c")<CR>P
+" nnoremap <leader>y "=strftime("%c")<CR>P
 
-compiler rubyunit
-nmap <Leader>a :cf /tmp/autotest.txt<CR> :compiler rubyunit<CR>
+" compiler rubyunit
+" nmap <Leader>a :cf /tmp/autotest.txt<CR> :compiler rubyunit<CR>
 
 
 " Don't delete the indents on blank lines for python files
@@ -350,7 +366,7 @@ augroup END
     " nnoremap  :  ;
     "
     "
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+" set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 " Protect large files from sourcing and other overhead.
 " Files become read only
