@@ -47,6 +47,18 @@ set shortmess=atI
 set listchars=tab:>-,trail:.,eol:$
 set mouse=""                               " Disable
 
+""""""""""
+" vimfiler
+""""""""""
+" let g:vimfiler_as_default_explorer = 1
+
+nnoremap <C-f> :<C-u>VimFiler<CR>
+" nnoremap <leader>fb  :<C-u>VimFilerExplorer<CR>
+" Open vimfiler if vim is opened without a file
+if !argc()
+        autocmd VimEnter * VimFiler
+endif
+
 colorscheme solarized
 
 " I always hit wq by accident on my small laptop keyboard, so disable it and
@@ -139,8 +151,8 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
-nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files   file_rec/async:!<cr>
-nnoremap <leader>f :<C-u>Unite -buffer-name=files   file<cr>
+nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files file file_rec/async:!<cr>
+" nnoremap <leader>f :<C-u>Unite -buffer-name=files   file<cr>
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
