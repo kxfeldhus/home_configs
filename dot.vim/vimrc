@@ -47,17 +47,6 @@ set shortmess=atI
 set listchars=tab:>-,trail:.,eol:$
 set mouse=""                               " Disable
 
-""""""""""
-" vimfiler
-""""""""""
-" let g:vimfiler_as_default_explorer = 1
-
-nnoremap <C-f> :<C-u>VimFiler<CR>
-" nnoremap <leader>fb  :<C-u>VimFilerExplorer<CR>
-" Open vimfiler if vim is opened without a file
-if !argc()
-        autocmd VimEnter * VimFiler
-endif
 
 colorscheme solarized
 
@@ -156,6 +145,19 @@ nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files file f
 nnoremap <leader>r :<C-u>Unite -buffer-name=mru     file_mru<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
+
+""""""""""
+" vimfiler
+""""""""""
+" let g:vimfiler_as_default_explorer = 1
+
+nnoremap <leader>f :<C-u>VimFiler<CR>
+
+" Open vimfiler if vim is opened without a file
+if !argc()
+        autocmd VimEnter * VimFiler
+endif
+
 
 
 """"""""""""""""""""""""""""""
