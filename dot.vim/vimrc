@@ -128,6 +128,9 @@ au BufNewFile,BufRead *.yaml,*.yml setf yaml
 au BufNewFile,BufRead *.jst set syntax=jst
 au BufNewFile,BufRead *.j :set syntax=objj
 
+" Markdown files
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " MapServer config file
 au BufNewFile,BufRead *.map         setf map
 au FileType map set shiftwidth=2 softtabstop=2 et
@@ -140,9 +143,10 @@ let g:unite_source_history_yank_enable = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
-nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files file file_rec/async:!<cr>
-" nnoremap <leader>f :<C-u>Unite -buffer-name=files   file<cr>
-nnoremap <leader>r :<C-u>Unite -buffer-name=mru     file_mru<cr>
+nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files file file_mru file_rec/async:!<cr>
+nnoremap <leader>g :<C-u>Unite -buffer-name=files   file<cr>
+" nnoremap <leader>r :<C-u>Unite -buffer-name=mru     file_mru<cr>
+nnoremap <leader>r :<C-u>Unite -buffer-name=grep grep:.<cr>
 nnoremap <leader>y :<C-u>Unite -buffer-name=yank    history/yank<cr>
 nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
 
@@ -151,11 +155,11 @@ nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
 """"""""""
 " let g:vimfiler_as_default_explorer = 1
 
-nnoremap <leader>f :<C-u>VimFiler<CR>
+nnoremap <leader>f :<C-u>VimFilerBufferDir -force-quit<CR>
 
 " Open vimfiler if vim is opened without a file
 if !argc()
-        autocmd VimEnter * VimFiler
+        autocmd VimEnter * VimFiler -force-quit
 endif
 
 
