@@ -17,5 +17,14 @@ export PATH=/home/kfeldhus/.local/bin:$PATH
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/12.1/client64/lib/
 #export ORACLE_HOME=/usr/lib/oracle/12.1/
 
+# Git
+GIT_HOME=/usr/local/git
+PATH=$GIT_HOME/bin:$PATH
+
+# Go
 export GOPATH=$HOME/code/go
 export PATH=$PATH:$GOPATH/bin
+
+# Make less handle utf-8 and a few more customizations.
+export LESSCHARSET=utf-8
+export LESS="-eiRMX"

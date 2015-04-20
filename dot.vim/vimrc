@@ -158,9 +158,9 @@ nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
 nnoremap <leader>f :<C-u>VimFilerBufferDir -force-quit<CR>
 
 " Open vimfiler if vim is opened without a file
-if !argc()
-        autocmd VimEnter * VimFiler -force-quit
-endif
+" if !argc()
+"         autocmd VimEnter * VimFiler -force-quit
+" endif
 
 
 
