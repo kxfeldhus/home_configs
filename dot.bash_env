@@ -27,4 +27,4 @@ export PATH=$PATH:$GOPATH/bin
 
 # Make less handle utf-8 and a few more customizations.
 export LESSCHARSET=utf-8
-export LESS="-eiRMX"
+export LESS="-iRMXS"
