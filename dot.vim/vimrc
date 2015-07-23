@@ -47,7 +47,8 @@ set shortmess=atI
 set listchars=tab:>-,trail:.,eol:$
 set mouse=""                               " Disable
 
-
+let g:solarized_termtrans = 1
+" let g:solarized_termcolors=16
 colorscheme solarized
 
 " I always hit wq by accident on my small laptop keyboard, so disable it and
@@ -140,8 +141,8 @@ au FileType map set shiftwidth=2 softtabstop=2 et
 " Unite
 """"""""""""""""""""""""""""""""
 let g:unite_source_history_yank_enable = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
+" call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" call unite#filters#sorter_default#use(['sorter_rank'])
 
 nnoremap <leader>t :<C-u>Unite -start-insert -no-split -buffer-name=files file file_rec/async:!<cr>
 nnoremap <leader>g :<C-u>Unite -buffer-name=files   file<cr>
@@ -191,10 +192,10 @@ let g:better_whitespace_filetypes_blacklist = ['unite']
 
 
 " Show the 80th column
-if (exists('+colorcolumn'))
-        set colorcolumn=80
-        highlight ColorColumn ctermbg=9
-endif
+" if (exists('+colorcolumn'))
+"         set colorcolumn=80
+"         highlight ColorColumn ctermbg=9
+" endif
 
 
 """"""""""""""""""""""""""""""

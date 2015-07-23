@@ -2,7 +2,7 @@
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
+    alias grep='grep --color=always'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
@@ -30,8 +30,8 @@ alias svndiffvim='svn diff --diff-cmd ~/bin/svnvimdiff'
 alias tf='tail -f'
 alias tt='tail -1000'
 alias s='screen'
-alias top='top -u $USER'
-alias htop='htop -u $USER'
+alias top='top -U $USER'
+alias htop='htop -U $USER'
 
 # Grep and exclude .svn
 function g() { eval "egrep -r -n" "$@" "| grep -v '\.svn'" ; }

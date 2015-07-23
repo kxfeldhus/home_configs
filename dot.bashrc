@@ -49,6 +49,6 @@ else
 fi
 
 # GNU Screen welcome window session selector
-if [ -f ~/.bash_screen ]; then
-        . ~/.bash_screen
-fi
+# if [ -f ~/.bash_screen ]; then
+#         . ~/.bash_screen
+# fi
