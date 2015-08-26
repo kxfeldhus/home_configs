@@ -16,6 +16,8 @@ shopt -s histappend # append to the history file, don't overwrite it
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+unset PROMPT_COMMAND
+export PROMPT_COMMAND="history -n;history -w;history -c;history -r;$PROMPT_COMMAND"
 
 
 # Environment variable definitions.
