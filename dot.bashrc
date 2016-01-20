@@ -6,9 +6,9 @@ fi
 # Short circuit if this is a non-interactive shell (rsync or such)
 [[ $- != *i* ]] && return
 
-HISTCONTROL=ignoredups:ignorespace # don't put duplicate lines in the history
+HISTCONTROL=ignoredups:ignorespace:erasedups #don't put duplicate lines in the history
 HISTSIZE=10000000
-HISTFILESIZE=2000000
+HISTFILESIZE=1000000
 HISTTIMEFORMAT="%Y%m%d %H:%M:%S "
 
 shopt -s checkwinsize # check the window size after each command and update the values of LINES and COLUMNS.
@@ -17,7 +17,8 @@ shopt -s histappend # append to the history file, don't overwrite it
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 unset PROMPT_COMMAND
-export PROMPT_COMMAND="history -n;history -w;history -c;history -r;$PROMPT_COMMAND"
+#export PROMPT_COMMAND="history -n;history -w;history -c;history -r;$PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 
 # Environment variable definitions.
@@ -53,4 +54,12 @@ fi
 # GNU Screen welcome window session selector
 # if [ -f ~/.bash_screen ]; then
 #         . ~/.bash_screen
+# fi
+# if [[ -z "$TMUX" ]] ;then
+#         ID="`tmux ls | grep -vm1 attached | cut -d: -f1`" # get the id of a deattached session
+#         if [[ -z "$ID" ]] ;then # if not available create a new one
+#                 tmux new-session
+#         else
+#                 tmux attach-session -t "$ID" # if available attach to it
+#         fi
 # fi
