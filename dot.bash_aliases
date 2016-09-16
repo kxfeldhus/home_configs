@@ -42,3 +42,5 @@ alias todo="todotxt"
 # affect of telling the remote that you are ssh'ing from a 
 # screen session, or not.
 function sshh() { ssh -t -X $@ 'export STY='"'$STY'"';bash'; }
+
+function cleanupMergedGitBranches() { git fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d }

@@ -63,3 +63,13 @@ fi
 #                 tmux attach-session -t "$ID" # if available attach to it
 #         fi
 # fi
+
+# TMUX stuff
+settitle() {
+  printf "\033k$1\033\\"
+}
+ssh() {
+  settitle "$*"
+  command ssh "$@"
+  settitle "bash"
+}
