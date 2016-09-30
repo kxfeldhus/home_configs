@@ -28,3 +28,18 @@
 [submodule "dot.vim/bundle/vim-unite"]
 	path = dot.vim/bundle/vim-unite
 	url = https://github.com/shougo/unite.vim
+[submodule "dot.vim/bundle/vim-proc"]
+	path = dot.vim/bundle/vim-proc
+	url = https://github.com/shougo/vimproc.vim
+[submodule "dot.vim/bundle/tlib_vim"]
+	path = dot.vim/bundle/tlib_vim
+	url = https://github.com/tomtom/tlib_vim
+[submodule "dot.vim/bundle/vim-addon-mw-utils"]
+	path = dot.vim/bundle/vim-addon-mw-utils
+	url = https://github.com/MarcWeber/vim-addon-mw-utils
+[submodule "dot.vim/bundle/vim-snipmate"]
+	path = dot.vim/bundle/vim-snipmate
+	url = https://github.com/garbas/vim-snipmate
+[submodule "dot.vim/bundle/vim-snippets"]
+	path = dot.vim/bundle/vim-snippets
+	url = https://github.com/honza/vim-snippets
