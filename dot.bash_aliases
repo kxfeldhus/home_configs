@@ -39,8 +39,11 @@ function g() { eval "egrep -r -n" "$@" "| grep -v '\.svn'" ; }
 alias todo="todotxt"
 
 # ssh and pass the current STY var through, this will have the
-# affect of telling the remote that you are ssh'ing from a 
+# affect of telling the remote that you are ssh'ing from a
 # screen session, or not.
 function sshh() { ssh -t -X $@ 'export STY='"'$STY'"';bash'; }
 
 function cleanupMergedGitBranches() { git fetch --prune && git branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d ; }
+
+# Copy configs to machine:
+# rsync -PavrL .bashrc .bash_env .bash_aliases .bash_profile .bash_prompt .bash_screen .bash_work .tmux.conf .gitconfig .zshrc ${SERVER_URL}:/home/kfeldhus
