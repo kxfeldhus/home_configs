@@ -1,0 +1,25 @@
+[user]
+	name = kfeldhus
+	email = kfeldhus@tendrilinc.com
+[core]
+	autocrlf = input
+[credential]
+	helper = osxkeychain
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[alias]
+	d = difftool
+[filter "lfs"]
+	smudge = git-lfs smudge %f
+	required = true
+	clean = git-lfs clean %f
+[alias]
+        co = checkout
+        ci = commit
+        st = status
+        br = branch
+        hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+        type = cat-file -t
+        dump = cat-file -p
