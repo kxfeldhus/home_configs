@@ -25,3 +25,6 @@
 [submodule "dot.vim/bundle/vim-airline"]
 	path = dot.vim/bundle/vim-airline
 	url = git://github.com/bling/vim-airline
+[submodule "dot.vim/bundle/vim-unite"]
+	path = dot.vim/bundle/vim-unite
+	url = https://github.com/shougo/unite.vim
