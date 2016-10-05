@@ -31,7 +31,7 @@ alias tf='tail -f'
 alias tt='tail -1000'
 alias s='screen'
 alias top='top -U $USER'
-alias htop='htop -U $USER'
+alias htop='htop'
 
 # Grep and exclude .svn
 function g() { eval "egrep -r -n" "$@" "| grep -v '\.svn'" ; }
