@@ -90,6 +90,12 @@ setopt prompt_subst
 autoload -U promptinit
 promptinit
 
+# Set the tmux window title
+settitle() {
+  printf "\033k$1\033\\"
+}
+
+
 PROMPT="%{$fg_bold[white]%}%n@%m:%~%{$fg[white]%}% %{$reset_color%}
 %{$fg_bold[red]%}>%{$reset_color%}"
 
@@ -112,9 +118,7 @@ fi
 fi
 
 # TMUX stuff
-settitle() {
-  printf "\033k$1\033\\"
-}
+unsetopt HUP # This fixes the issue where client's disconnect but the server doesn't know about it.
 ssh() {
   settitle "$*"
   command ssh "$@"
