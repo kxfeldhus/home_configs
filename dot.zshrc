@@ -30,7 +30,7 @@ ZSH_THEME="blinks"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -91,9 +91,9 @@ autoload -U promptinit
 promptinit
 
 # Set the tmux window title
-settitle() {
-  printf "\033k$1\033\\"
-}
+# settitle() {
+#   printf "\033k$1\033\\"
+# }
 
 
 PROMPT="%{$fg_bold[white]%}%n@%m:%~%{$fg[white]%}% %{$reset_color%}
@@ -118,9 +118,9 @@ fi
 fi
 
 # TMUX stuff
-unsetopt HUP # This fixes the issue where client's disconnect but the server doesn't know about it.
-ssh() {
-  settitle "$*"
-  command ssh "$@"
-  settitle "bash"
-}
+# unsetopt HUP # This fixes the issue where client's disconnect but the server doesn't know about it.
+# ssh() {
+#   settitle "$*"
+#   command ssh "$@"
+#   settitle "bash"
+# }
