@@ -40,7 +40,7 @@ COMPLETION_WAITING_DOTS="true"
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
+HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -54,7 +54,7 @@ plugins=(git tmux scala osx)
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+# export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,12 +90,6 @@ setopt prompt_subst
 autoload -U promptinit
 promptinit
 
-# Set the tmux window title
-# settitle() {
-#   printf "\033k$1\033\\"
-# }
-
-
 PROMPT="%{$fg_bold[white]%}%n@%m:%~%{$fg[white]%}% %{$reset_color%}
 %{$fg_bold[red]%}>%{$reset_color%}"
 
@@ -117,10 +111,8 @@ fi
         . ~/.bash_work
 fi
 
-# TMUX stuff
-# unsetopt HUP # This fixes the issue where client's disconnect but the server doesn't know about it.
-# ssh() {
-#   settitle "$*"
-#   command ssh "$@"
-#   settitle "bash"
-# }
+# Prompt definitions.
+setopt histappend # append to the history file, don't overwrite it
+if [ -f ~/.bash_prompt ]; then
+        . ~/.bash_prompt
+fi
