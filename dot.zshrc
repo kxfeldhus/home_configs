@@ -113,6 +113,7 @@ fi
 
 # Prompt definitions.
 setopt histappend # append to the history file, don't overwrite it
+unsetopt share_history # Don't reload the history after each command, so I can keep tmux instances separate
 if [ -f ~/.bash_prompt ]; then
         . ~/.bash_prompt
 fi
