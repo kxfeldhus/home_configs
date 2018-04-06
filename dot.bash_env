@@ -28,3 +28,10 @@ export GIT_ASKPASS=
 # Make less handle utf-8 and a few more customizations.
 export LESSCHARSET=utf-8
 export LESS="-iRMXS"
+
+# Try and keep the java popup from showing up.
+# export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+
+# Set up pyenv virtualenv
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

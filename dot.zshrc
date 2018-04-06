@@ -49,7 +49,8 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux scala osx)
+#plugins=(vi-mode git tmux scala osx)
+plugins=(git tmux scala osx) # Disabled vi-mode for now
 
 # User configuration
 
@@ -78,11 +79,23 @@ source $ZSH/oh-my-zsh.sh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-#
+
+
+VIM_INS_MODE="%{$fg[cyan]%}[INS]%{$reset_color%}"
+VIM_CMD_MODE="%{$fg[green]%}[CMD]%{$reset_color%}"
+VIM_MODE=$VIM_INS_MODE
+
+function zle-keymap-select {
+  VIM_MODE="${${KEYMAP/vicmd/${VIM_CMD_MODE}}/(main|viins)/${VIM_INS_MODE}}"
+  zle reset-prompt
+}
+zle -N zle-keymap-select
+
+function zle-line-finish {
+  VIM_MODE=$VIM_INS_MODE
+}
+zle -N zle-line-finish
+
 
 # === PROMPT ===
 setopt prompt_subst
@@ -93,7 +106,8 @@ promptinit
 PROMPT="%{$fg_bold[white]%}%n@%m:%~%{$fg[white]%}% %{$reset_color%}
 %{$fg_bold[red]%}>%{$reset_color%}"
 
-RPROMPT='%{$fg_bold[yellow]%}$(git_prompt_info)%{$reset_color%}[%*]'
+#RPROMPT='${VIM_MODE}%{$fg_bold[yellow]%}$(git_prompt_info)%{$reset_color%}[%*]'
+RPROMPT='%{$fg_bold[yellow]%}$(git_prompt_info)%{$reset_color%}[%*]' # Disable vi-mode for now
 
 
 # Environment variable definitions.
@@ -117,3 +131,10 @@ unsetopt share_history # Don't reload the history after each command, so I can k
 if [ -f ~/.bash_prompt ]; then
         . ~/.bash_prompt
 fi
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /usr/local/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
