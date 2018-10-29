@@ -159,6 +159,7 @@ nnoremap <leader>e :<C-u>Unite -buffer-name=buffer  buffer<cr>
 " let g:vimfiler_as_default_explorer = 1
 
 nnoremap <leader>f :<C-u>VimFilerBufferDir -force-quit<CR>
+nnoremap <leader>d :<C-u>VimFilerExplorer -force-quit<CR>
 
 " Open vimfiler if vim is opened without a file
 " if !argc()
@@ -190,7 +191,7 @@ let g:airline_symbols.linenr    = '#'
 map <leader>ws :StripWhitespace<CR>
 
 " Dont do the whitespace highlighting in the unite window.
-let g:better_whitespace_filetypes_blacklist = ['unite']
+" let g:better_whitespace_filetypes_blacklist = ['unite', 'vimfiler']
 
 
 " Show the 80th column
