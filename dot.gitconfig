@@ -1,10 +1,8 @@
 [user]
 	name = kfeldhus
-	email = kfeldhus@tendrilinc.com
+	email = kyle.feldhus@spire.com
 [core]
 	autocrlf = input
-[credential]
-	helper = osxkeychain
 [diff]
 	tool = vimdiff
 [difftool]

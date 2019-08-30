@@ -1,0 +1,72 @@
+conky.config = {
+	background = true,
+	use_xft = true,
+	font = 'Ubuntu:pixelsize=14',
+	xftalpha = 0.5,
+	update_interval = 1,
+	total_run_times = 0,
+	own_window = true,
+	own_window_class = Conky,
+	own_window_type = 'dock',
+	own_window_transparent = true,
+        own_window_argb_visual = true,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+	double_buffer = true,
+	minimum_width = 260, minimum_height = 5,
+	maximum_width = 260,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = true,
+	default_color = 'darkgrey',
+	default_shade_color = 'blue',
+	default_outline_color = 'green',
+	alignment = 'bottom_left',
+	gap_x = 14,
+	gap_y = 48,
+	no_buffers = true,
+	uppercase = false,
+	cpu_avg_samples = 2,
+	override_utf8_locale = false
+};
+
+conky.text = [[
+${color #55aaff} System Info ${color lightgrey} ${hr 2 } ${color}
+
+${color lightgrey}$nodename$color - $sysname $kernel on $machine
+${color lightgrey}Uptime:$color $uptime
+${color lightgrey}Load:$color $loadavg
+
+${color #55aaff}CPU ${color lightgrey} ${hr 2} ${color}
+${cpugraph 25,180} $alignr ${voffset -15} ${cpu cpu0}%
+${execgraph "echo 'scale=2; '`cat /proc/cpuinfo | grep 'cpu MHz' | head -1 | cut -c 12-15`' / 4100 * 100' | bc" 25,180} ${alignr} ${voffset -15} ${freq_g} GHz
+${execgraph "TEMP=`sensors | grep 'Package id 0' | cut -c 17-20` && echo $TEMP | bc" 25,180} ${alignr} ${voffset -15} ${exec sensors | grep 'Package id 0' | cut -c 17-20} C
+
+${color #55aaff}Memory ${color lightgrey}${hr 2}${color}
+${color lightgrey}Mem${color} $alignc $mem / $memmax
+${memgraph 25,180} $alignr ${voffset -15} $memperc%
+
+${color lightgrey}Swap${color} $alignc $swap / $swapmax $alignr $swapperc%
+$swapbar
+
+${color #55aaff}Disk ${color lightgrey}${hr 2}${color}
+${color lightgrey}Usage${color} $alignc $fs_used / $fs_size = $fs_free $alignr $fs_free_perc%
+$fs_bar
+${diskiograph_read 25,180} ${voffset 10}R $alignr ${voffset -25} ${diskio_read}
+${diskiograph_write 25,180} ${voffset 10}W $alignr ${voffset -25} ${diskio_write}
+
+${color #55aaff}Wifi ${color lightgrey}${hr 2}${color}
+${upspeedgraph wlp2s0 25,180} ${voffset 10}U $alignr ${voffset -25} ${upspeed wlp2s0}
+${downspeedgraph wlp2s0 25,180} ${voffset 10}D $alignr ${voffset -25} ${downspeed wlp2s0}
+
+${color #55aaff}Top Processes ${color lightgrey}${hr 2}${color}
+$processes processes
+
+NAME             		${alignr} PID   CPU  MEM
+${top name 1} $alignr ${top pid 1} ${top cpu 1} ${top mem 1}
+${top name 2} $alignr ${top pid 2} ${top cpu 2} ${top mem 2}
+${top name 3} $alignr ${top pid 3} ${top cpu 3} ${top mem 3}
+${top name 4} $alignr ${top pid 4} ${top cpu 4} ${top mem 4}
+${top name 5} $alignr ${top pid 5} ${top cpu 5} ${top mem 5}
+
+]];

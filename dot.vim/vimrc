@@ -102,6 +102,10 @@ au FileType xml :set autoindent expandtab cin shiftwidth=2 softtabstop=2
 au FileType cucumber :set autoindent expandtab cin shiftwidth=2 softtabstop=2
 au FileType perl :set autoindent expandtab cin shiftwidth=2 softtabstop=2
 au FileType make :set noautoindent noexpandtab shiftwidth=4 tabstop=4 softtabstop=0
+au BufRead,BufNewFile *.sh set filetype=sh
+au BufRead,BufNewFile yaml, yml set filetype=yaml
+au BufRead,BufNewFile *rc set filetype=rc
+
 
 " Javascript
 au FileType javascript set autoindent expandtab cin shiftwidth=2 softtabstop=2 cino +=(0
@@ -119,17 +123,17 @@ let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0 " Rope will recursively look for a project, and be really slow
 
 " Ruby
-au FileType ruby,eruby set autoindent expandtab cin shiftwidth=2 softtabstop=2 cino +=(0
-au FileType ruby,eruby set omnifunc=rubycomplete#Complete
-au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-au FileType ruby,eruby let g:rubycomplete_rails = 1
-au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
-au BufNewFile,BufRead *.thor set filetype=ruby
-au BufNewFile,BufRead .autotest set filetype=ruby
-au BufNewFile,BufRead Gemfile set filetype=ruby
-au BufNewFile,BufRead *.yaml,*.yml setf yaml
-au BufNewFile,BufRead *.jst set syntax=jst
-au BufNewFile,BufRead *.j :set syntax=objj
+" au FileType ruby,eruby set autoindent expandtab cin shiftwidth=3 softtabstop=2 cino +=(0
+" au FileType ruby,eruby set omnifunc=rubycomplete#Complete
+" au FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+" au FileType ruby,eruby let g:rubycomplete_rails = 1
+" au FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+" au BufNewFile,BufRead *.thor set filetype=ruby
+" au BufNewFile,BufRead .autotest set filetype=ruby
+" au BufNewFile,BufRead Gemfile set filetype=ruby
+" au BufNewFile,BufRead *.yaml,*.yml setf yaml
+" au BufNewFile,BufRead *.jst set syntax=jst
+" au BufNewFile,BufRead *.j :set syntax=objj
 
 " Markdown files
 au BufRead,BufNewFile *.md set filetype=markdown

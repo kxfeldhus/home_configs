@@ -6,32 +6,18 @@ export SVN_EDITOR=vim
 # Don't popup window for git password
 export GIT_ASKPASS=
 
-# Rbenv
-# export PATH="$HOME/.rbenv/bin:$PATH"
-# export PATH="/dg/local/cots/rbenv/bin:$PATH"
-# eval "$(rbenv init -)"
-
-# export PYTHONSTARTUP=~/.pystartup
-# export PATH=/home/kfeldhus/.local/bin:$PATH
-
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/oracle/12.1/client64/lib/
-#export ORACLE_HOME=/usr/lib/oracle/12.1/
-
-# Git
-# GIT_HOME=/usr/local/git
-# PATH=$GIT_HOME/bin:$PATH
-
-# Go
-# export GOPATH=$HOME/code/go
-# export PATH=$PATH:$GOPATH/bin
-
 # Make less handle utf-8 and a few more customizations.
 export LESSCHARSET=utf-8
 export LESS="-iRMXS"
 
-# Try and keep the java popup from showing up.
-# export JAVA_TOOL_OPTIONS="-Dapple.awt.UIElement=true"
+export PATH=$HOME/miniconda3/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=~/.local/bin/:$PATH
 
 # Set up pyenv virtualenv
+export PATH="/home/kfeldhus/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+
+alias t='exec tmux'
+
+. /home/kfeldhus/miniconda3/etc/profile.d/conda.sh
