@@ -10,7 +10,7 @@ export GIT_ASKPASS=
 export LESSCHARSET=utf-8
 export LESS="-iRMXS"
 
-export PATH=$HOME/miniconda3/bin:$PATH
+#export PATH=$PATH:$HOME/miniconda3/bin
 export PATH=$HOME/bin:$PATH
 export PATH=~/.local/bin/:$PATH
 
@@ -18,6 +18,4 @@ export PATH=~/.local/bin/:$PATH
 export PATH="/home/kfeldhus/.pyenv/bin:$PATH"
 eval "$(pyenv init -)"
 
-alias t='exec tmux'
-
-. /home/kfeldhus/miniconda3/etc/profile.d/conda.sh
+#. /home/kfeldhus/miniconda3/etc/profile.d/conda.sh

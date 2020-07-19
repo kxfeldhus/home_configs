@@ -22,8 +22,8 @@ conky.config = {
 	default_shade_color = 'blue',
 	default_outline_color = 'green',
 	alignment = 'bottom_left',
-	gap_x = 14,
-	gap_y = 48,
+	gap_x = 0,
+	gap_y = 0,
 	no_buffers = true,
 	uppercase = false,
 	cpu_avg_samples = 2,
@@ -55,9 +55,16 @@ $fs_bar
 ${diskiograph_read 25,180} ${voffset 10}R $alignr ${voffset -25} ${diskio_read}
 ${diskiograph_write 25,180} ${voffset 10}W $alignr ${voffset -25} ${diskio_write}
 
+${color lightgrey}IO Wait ${color}
+${execgraph "echo 'scale=2; '`/home/kfeldhus/bin/get_iowait.sh`'' | bc" 25,180} ${alignr} ${voffset -15} ${color} ${exec ~/bin/get_iowait.sh} %
+
 ${color #55aaff}Wifi ${color lightgrey}${hr 2}${color}
 ${upspeedgraph wlp2s0 25,180} ${voffset 10}U $alignr ${voffset -25} ${upspeed wlp2s0}
 ${downspeedgraph wlp2s0 25,180} ${voffset 10}D $alignr ${voffset -25} ${downspeed wlp2s0}
+
+${color #55aaff}Lan ${color lightgrey}${hr 2}${color}
+${upspeedgraph enxe4b97ac2b87b 25,180} ${voffset 10}U $alignr ${voffset -25} ${upspeed enxe4b97ac2b87b}
+${downspeedgraph enxe4b97ac2b87b 25,180} ${voffset 10}D $alignr ${voffset -25} ${downspeed enxe4b97ac2b87b}
 
 ${color #55aaff}Top Processes ${color lightgrey}${hr 2}${color}
 $processes processes
